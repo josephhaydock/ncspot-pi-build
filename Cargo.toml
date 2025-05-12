@@ -128,6 +128,6 @@ priority = "optional"
 section = "sound"
 
 [patch.crates-io]
-ring = { git = "https://github.com/briansmith/ring", tag = "0.17.13", default-features = false, features = ["dev_urandom_fallback"] }
+ring = { git = "https://github.com/briansmith/ring", rev = "5f1e50cb091fd603a1d1344d0c8dbfbfa1a8cfb6", default-features = false, features = ["dev_urandom_fallback"] }
 
 
