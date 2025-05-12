@@ -12,6 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Git credentials
+        run: |
+          git config --global url."https://${{ secrets.GH_PAT }}@github.com".insteadOf "https://github.com"
+
       - name: Set up Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
@@ -19,7 +23,7 @@ jobs:
           target: armv7-unknown-linux-gnueabihf
 
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y pkg-config libasound2-dev libssl-dev libdbus-1-dev
+        run: sudo apt-get update && sudo apt-get install -y pkg-config libasound2-dev libssl-dev libdbus-1-dev gcc-arm-linux-gnueabihf
 
       - name: Build for Raspberry Pi
         run: cargo build --release --target armv7-unknown-linux-gnueabihf
