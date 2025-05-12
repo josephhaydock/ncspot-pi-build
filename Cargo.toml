@@ -124,3 +124,9 @@ It is heavily inspired by ncurses MPD clients, such as ncmpc."""
 license-file = ["LICENSE"]
 priority = "optional"
 section = "sound"
+
+[target.armv7-unknown-linux-gnueabihf.dependencies]
+ring = { version = "0.17.13", optional = true }
+
+[patch.crates-io]
+ring = { git = "https://github.com/aldanor/ring", branch = "ring-noasm" }
