@@ -1,0 +1,33 @@
+name: Build ncspot for Raspberry Pi
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: armv7-unknown-linux-gnueabihf
+          override: true
+
+      - name: Install cross
+        run: cargo install cross --locked
+
+      - name: Build ncspot
+        run: cross build --release --target armv7-unknown-linux-gnueabihf
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: ncspot-armv7
+          path: target/armv7-unknown-linux-gnueabihf/release/ncspot
