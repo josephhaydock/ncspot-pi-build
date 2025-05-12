@@ -129,4 +129,4 @@ section = "sound"
 ring = { version = "0.17.13", optional = true }
 
 [patch.crates-io]
-ring = { git = "ssh://[email protected]/agerasev/ring.git", branch = "noasm" }
+ring = { git = "[email protected]:agerasev/ring.git", branch = "noasm" }
