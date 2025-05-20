@@ -1,5 +1,2 @@
-[alias]
-xtask = "run --quiet --package xtask --"
-
-[net]
-git-fetch-with-cli = true
+[target.armv7-unknown-linux-gnueabihf]
+env = { AWS_LC_SYS_EXTERNAL_BINDGEN = "0" }
